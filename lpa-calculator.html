@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LPA Calculator</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #ff4d00;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #e64400;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #111;
+    }
+
+    .small {
+      font-size: 13px;
+      color: #777;
+      margin-top: 8px;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 13px;
+    }
+
+    .footer a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>LPA Calculator</h1>
+    <p>Convert your salary from LPA to annual and monthly values instantly.</p>
+
+    <input type="number" id="lpaInput" placeholder="Enter LPA (e.g. 10)" />
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div class="result" id="result"></div>
+
+    <div class="small">*Monthly salary is gross before tax deductions</div>
+
+    <div class="footer">
+      <a href="https://interviewcracker.com/free-calculators/lpa-calculator/" target="_blank">
+        View full guide
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function calculate() {
+      let lpa = document.getElementById("lpaInput").value;
+
+      if (lpa === "" || lpa <= 0) {
+        document.getElementById("result").innerHTML = "Please enter a valid LPA";
+        return;
+      }
+
+      let annual = lpa * 100000;
+      let monthly = annual / 12;
+
+      document.getElementById("result").innerHTML =
+        "Annual Salary: ₹" + annual.toLocaleString() +
+        "<br>Monthly Salary: ₹" + Math.round(monthly).toLocaleString();
+    }
+  </script>
+
+</body>
+</html>
